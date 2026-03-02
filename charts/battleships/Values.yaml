@@ -1,0 +1,14 @@
+replicaCount: 2
+appName: my-eks-app
+image:
+  repository: 677276094537.dkr.ecr.us-east-1.amazonaws.com/heartflow/battleships
+  pullPolicy: Always
+  # Overridden by Harness during execution
+  tag: "ced0688"
+
+# This tells Harness to create a temporary K8s secret and use it
+dockercfg: <+artifact.imagePullSecret>
+
+service:
+  type: LoadBalancer
+  port: 80
